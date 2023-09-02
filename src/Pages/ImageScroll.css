@@ -1,0 +1,17 @@
+.image-scroll-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: 100vh;
+}
+
+.image {
+  width: 200px; /* Adjust the image width as needed */
+  transition: transform 0.3s ease-in-out;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
