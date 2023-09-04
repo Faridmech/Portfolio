@@ -10,6 +10,9 @@ import {
   Switch,
 } from "@chakra-ui/react"
 import { PiLightbulbFilamentLight } from "react-icons/pi"
+import "./Home.css"
+
+import { GrReactjs } from "react-icons/gr"
 
 const ImageScroll = () => {
   const [scrollPosition, setScrollPosition] = useState(0)
@@ -31,6 +34,10 @@ const ImageScroll = () => {
   const marginTop2 = ` ${dynamicMarginTop2}px`
   const marginTop3 = ` ${dynamicMarginTop3}px`
 
+  const dynamicRortateTop1 = Math.max(90, 200 - window.scrollY / 10)
+  const rorateTop1 = `rotate(-${dynamicRortateTop1}deg)`
+  console.log("dynamicRortateTop1", window.scrollY / 10)
+
   const [currentSecond, setCurrentSecond] = useState(new Date().getSeconds())
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -42,6 +49,9 @@ const ImageScroll = () => {
   console.log(currentSecond)
   return (
     <Box width="100%" height="100%" bg="rgb(138,197,202)" marginBottom="10rem">
+      <Text className="heading">You Looking Developer Portfolio</Text>
+      <GrReactjs className="star1" />
+
       <VStack direction="row" h="100px" mr="65rem">
         <VStack mt="0.4rem">
           <Switch size="md" />
@@ -126,14 +136,24 @@ const ImageScroll = () => {
         <Box
           display="flex"
           flexDirection="row"
-          gap={marginTop2}
-          marginTop={marginTop2}
-          opacity={window.scrollY / 1100}
+          gap={marginTop3}
+          marginTop={marginTop3}
+          opacity={window.scrollY / 1300}
         >
           <Box width="19rem" height="22rem" bg="red" marginTop="3rem"></Box>
           <Box width="19rem" height="22rem" bg="red" marginTop="3rem"></Box>
         </Box>
       </Center>
+      <Box width="100%" height="20rem" bg="blue">
+        <Box
+          ml="3rem"
+          className="box-red"
+          width="40px"
+          height="300px"
+          transformOrigin="top right"
+          transform={rorateTop1}
+        ></Box>
+      </Box>
     </Box>
   )
 }
