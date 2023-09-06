@@ -27,16 +27,19 @@ const ImageScroll = () => {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
-  const dynamicMarginTop1 = Math.max(40, 370 - window.scrollY)
-  const dynamicMarginTop2 = Math.max(40, 870 - window.scrollY)
-  const dynamicMarginTop3 = Math.max(40, 1070 - window.scrollY)
-  const marginTop1 = ` ${dynamicMarginTop1}px`
-  const marginTop2 = ` ${dynamicMarginTop2}px`
-  const marginTop3 = ` ${dynamicMarginTop3}px`
+  const dynamicBoxAppearing1 = Math.max(40, 370 - window.scrollY)
+  const dynamicBoxAppearing2 = Math.max(40, 870 - window.scrollY)
+  const dynamicBoxAppearing3 = Math.max(40, 1070 - window.scrollY)
+  const boxAppearing1 = ` ${dynamicBoxAppearing1}px`
+  const boxAppearing2 = ` ${dynamicBoxAppearing2}px`
+  const boxAppearing3 = ` ${dynamicBoxAppearing3}px`
 
-  const dynamicRortateTop1 = Math.max(90, 200 - window.scrollY / 10)
-  const rorateTop1 = `rotate(-${dynamicRortateTop1}deg)`
-  console.log("dynamicRortateTop1", window.scrollY / 10)
+  const dynamicRortateBox1 = Math.min(90, window.scrollY / 10 - 41)
+  const rorateBox1 = `rotate(-${dynamicRortateBox1}deg)`
+  const dynamicRortateTop2 = Math.min(90, window.scrollY / 10 - 41)
+  const rorateBox2 = `rotate(${dynamicRortateBox1}deg)`
+
+  console.log("dynamicRortateTop1", window.scrollY / 10 - 60)
 
   const [currentSecond, setCurrentSecond] = useState(new Date().getSeconds())
   useEffect(() => {
@@ -49,9 +52,6 @@ const ImageScroll = () => {
   console.log(currentSecond)
   return (
     <Box width="100%" height="100%" bg="rgb(138,197,202)" marginBottom="10rem">
-      <Text className="heading">You Looking Developer Portfolio</Text>
-      <GrReactjs className="star1" />
-
       <VStack direction="row" h="100px" mr="65rem">
         <VStack mt="0.4rem">
           <Switch size="md" />
@@ -108,14 +108,17 @@ const ImageScroll = () => {
         display="flex"
         flexDirection="column"
         mt="3rem"
+        maxWidth="100%"
+        overflowX="hidden"
       >
         {" "}
         <Box
           display="flex"
           flexDirection="row"
-          gap={marginTop1}
-          marginTop={marginTop1}
+          gap={boxAppearing1}
+          marginTop={boxAppearing1}
           opacity={window.scrollY / 400}
+          overflow-x="hidden"
         >
           <Box width="19rem" height="22rem" bg="red"></Box>
           <Box width="19rem" height="22rem" bg="red"></Box>
@@ -125,9 +128,10 @@ const ImageScroll = () => {
         <Box
           display="flex"
           flexDirection="row"
-          gap={marginTop2}
-          marginTop={marginTop2}
+          gap={boxAppearing2}
+          marginTop={boxAppearing2}
           opacity={window.scrollY / 900}
+          overflow-x="hidden"
         >
           <Box width="19rem" height="22rem" bg="red" marginTop="3rem"></Box>
           <Box width="19rem" height="22rem" bg="red" marginTop="3rem"></Box>
@@ -136,22 +140,37 @@ const ImageScroll = () => {
         <Box
           display="flex"
           flexDirection="row"
-          gap={marginTop3}
-          marginTop={marginTop3}
+          gap={boxAppearing3}
+          marginTop={boxAppearing3}
           opacity={window.scrollY / 1300}
+          overflow-x="hidden"
         >
           <Box width="19rem" height="22rem" bg="red" marginTop="3rem"></Box>
           <Box width="19rem" height="22rem" bg="red" marginTop="3rem"></Box>
         </Box>
       </Center>
-      <Box width="100%" height="20rem" bg="blue">
+
+      <Box
+        width="100%"
+        height="20rem"
+        bg="blue"
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+      >
         <Box
-          ml="3rem"
-          className="box-red"
+          bg="white"
           width="40px"
           height="300px"
           transformOrigin="top right"
-          transform={rorateTop1}
+          transform={rorateBox1}
+        ></Box>
+        <Box
+          bg="white"
+          width="40px"
+          height="300px"
+          transformOrigin="top left"
+          transform={rorateBox2}
         ></Box>
       </Box>
     </Box>
